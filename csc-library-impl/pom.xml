@@ -87,7 +87,7 @@
           <archive>
             <manifestSections>
               <manifestSection>
-                <name>fi/csc/shibboleth/plugin/proxylogout/</name>
+                <name>fi/csc/shibboleth/plugin/library/</name>
                 <manifestEntries>
                   <Implementation-Title>${project.artifactId}</Implementation-Title>
                   <Implementation-Version>${project.version}</Implementation-Version>

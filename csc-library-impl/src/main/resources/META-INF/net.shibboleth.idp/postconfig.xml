@@ -16,10 +16,10 @@
         class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer"
         p:placeholderPrefix="%{" p:placeholderSuffix="}" />
 
-    <bean id="csclib.ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction" 
+    <bean id="csclib.OIDC.AuthenticationContextClassReferenceTranslationStrategyLookupStrategy"
           class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction$LookupFunctionWrapper">
       <constructor-arg>
-        <bean class="net.shibboleth.oidc.profile.config.navigate.ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction"
+        <bean class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction"
               c:mappings="#{getObject('shibboleth.oidc.PrincipalProxyResponseMappings')}"/>
       </constructor-arg>
     </bean>

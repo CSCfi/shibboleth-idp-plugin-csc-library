@@ -81,6 +81,12 @@
         <version>${idp.version}</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>${idp.groupId}</groupId>
+        <artifactId>idp-saml-api</artifactId>
+        <version>${idp.version}</version>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <modules>

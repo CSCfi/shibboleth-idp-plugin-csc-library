@@ -50,6 +50,11 @@
       <artifactId>idp-testing</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>${idp.groupId}</groupId>
+      <artifactId>idp-saml-api</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

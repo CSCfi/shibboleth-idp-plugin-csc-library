@@ -14,16 +14,21 @@ Mimics shibboleth project 'ProxyAwareDefaultOIDCAuthenticationContextClassRespon
 
 ### csclib.OIDC.UpstreamClientIdLookupStrategy
 
-Bean that resolves OIDC RP client id per upstream OP from property csclib.oidc.upstream.clientIds.
+Bean that resolves OIDC RP client id per upstream OP from property `csclib.oidc.upstream.clientIds`.
 
+`csclib.oidc.upstream.clientIds = {"default": "default_clientId", "https://upstreamOP1.com", "upstreamOP1_clientId", "https://upstreamOP2.com", "upstreamOP2_clientId"}`
 
-Activation in relying party
+Activation of functionality in relying party:
+
 `<bean parent="OIDC.SSO" p:clientIdLookupStrategy-ref="csclib.OIDC.UpstreamClientIdLookupStrategy"..`
 
 ### csclib.OIDC.UpstreamClientCredentialsLookupStrategy
 
-Bean that resolves OIDC RP client id per upstream OP from property csclib.oidc.upstream.clientCredentials.
+Bean that resolves OIDC RP client id per upstream OP from property `csclib.oidc.upstream.clientCredentials`.
 
-Activation in relying party
+`{"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}`
+
+Activation of functionality in relying party:
+
 `<bean parent="OIDC.SSO" p:clientCredentialLookupStrategy-ref="csclib.OIDC.UpstreamClientCredentialsLookupStrategy"..`
 

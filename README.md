@@ -24,7 +24,7 @@ Activation of functionality in relying party:
 
 ### csclib.OIDC.UpstreamClientCredentialsLookupStrategy
 
-Bean that resolves OIDC RP client id per upstream OP from property `csclib.oidc.upstream.clientCredentials`.
+Bean that resolves OIDC RP client secret per upstream OP from property `csclib.oidc.upstream.clientCredentials`.
 
 `{"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}`
 

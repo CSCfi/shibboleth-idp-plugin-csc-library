@@ -26,7 +26,7 @@ Activation of functionality in relying party:
 
 Bean that resolves OIDC RP client secret per upstream issuer from property `csclib.oidc.upstream.clientCredentials`.
 
-`{"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}`
+`csclib.oidc.upstream.clientCredentials = {"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}`
 
 Activation of functionality in relying party:
 

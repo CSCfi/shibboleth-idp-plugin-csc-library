@@ -12,3 +12,18 @@ Bean library for CSC IdPs.
 
 Mimics shibboleth project 'ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction' functionality with the enhancement that you may map also non existent ACR values to values having empty key in 'shibboleth.oidc.PrincipalProxyResponseMappings'. 
 
+### csclib.OIDC.UpstreamClientIdLookupStrategy
+
+Bean that resolves OIDC RP client id per upstream OP from property csclib.oidc.upstream.clientIds.
+
+
+Activation in relying party
+`<bean parent="OIDC.SSO" p:clientIdLookupStrategy-ref="csclib.OIDC.UpstreamClientIdLookupStrategy"..`
+
+### csclib.OIDC.UpstreamClientCredentialsLookupStrategy
+
+Bean that resolves OIDC RP client id per upstream OP from property csclib.oidc.upstream.clientCredentials.
+
+Activation in relying party
+`<bean parent="OIDC.SSO" p:clientCredentialLookupStrategy-ref="csclib.OIDC.UpstreamClientCredentialsLookupStrategy"..`
+

@@ -30,6 +30,11 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>net.shibboleth.oidc</groupId>
+      <artifactId>oidc-common-crypto-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>${slf4j.groupId}</groupId>
       <artifactId>slf4j-api</artifactId>
       <scope>provided</scope>

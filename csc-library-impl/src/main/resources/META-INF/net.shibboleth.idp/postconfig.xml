@@ -24,4 +24,10 @@
       </constructor-arg>
     </bean>
 
+    <bean id="csclib.OIDC.UpstreamClientIdLookupStrategy"
+          class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.JSONPropertyClientIdLookupFunction" />
+
+    <bean id="csclib.OIDC.UpstreamClientCredentialsLookupStrategy"
+          class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.JSONPropertyClientCredentialsLookupFunction" />
+
 </beans>

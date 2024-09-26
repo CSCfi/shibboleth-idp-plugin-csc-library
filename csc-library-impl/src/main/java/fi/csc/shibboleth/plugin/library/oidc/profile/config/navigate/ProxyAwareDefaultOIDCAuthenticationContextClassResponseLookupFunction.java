@@ -43,7 +43,8 @@ import net.shibboleth.shared.logic.Constraint;
  * </p>
  */
 /**
- * Difference to Shibboleth project implementation is that also empty or null input is matched to empty mapping. 
+ * Difference to Shibboleth project implementation is that 1) also empty or null input is matched to empty mapping
+ * and 2) to input without mappings a default mapping is applied to.
  */
 @ThreadSafe
 public class ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction 
@@ -51,6 +52,10 @@ public class ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFuncti
     
     /** Mappings to transform proxied Principals. */
     @Nonnull @NonnullElements private final Map<String,Collection<Principal>> principalMappings;
+    
+    /** Key for response mapping to be used for unmapped ACRs. */
+    @Nonnull public final static String DEFAULT = "csclib.UpstreamACR.Default";
+    
     
     /**
      * 
@@ -75,9 +80,16 @@ public class ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFuncti
         
         if (amrOrAcrs != null && !amrOrAcrs.isEmpty()) {                
                 final List<Principal> principals = new ArrayList<>();                
-                for (final String amrOrAcr : amrOrAcrs) {                    
+                for (final String amrOrAcr : amrOrAcrs) {
+                    // Matching response mappings
                     if (principalMappings.containsKey(amrOrAcr)) {
                         final Collection<Principal> mappedPrincipals = principalMappings.get(amrOrAcr);
+                        if (!mappedPrincipals.isEmpty()) {
+                            principals.addAll(mappedPrincipals);
+                        }
+                    // Mapping for non matching acrs   
+                    } else  if (principalMappings.containsKey(DEFAULT)) {
+                        final Collection<Principal> mappedPrincipals = principalMappings.get(DEFAULT);
                         if (!mappedPrincipals.isEmpty()) {
                             principals.addAll(mappedPrincipals);
                         }
@@ -85,6 +97,7 @@ public class ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFuncti
                 }
                 return principals;            
         } else {
+            // non existing acrs
             if (principalMappings.containsKey("")) {
                 final List<Principal> principals = new ArrayList<>();
                 final Collection<Principal> mappedPrincipals = principalMappings.get("");

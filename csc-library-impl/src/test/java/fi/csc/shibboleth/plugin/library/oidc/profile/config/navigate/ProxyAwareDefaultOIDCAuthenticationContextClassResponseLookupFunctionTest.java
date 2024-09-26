@@ -93,6 +93,50 @@ public class ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFuncti
     }
     
     @Test
+    public void testSingleMappingSuccess_DefaultMapped() {
+        
+        
+        final Map<String,Collection<Principal>> mappings = new HashMap<>();
+        mappings.put(
+                ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction.DEFAULT, 
+                List.of(new AuthenticationMethodPrincipal
+                        ("default")));
+        function = new ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction(mappings);;
+        
+        // will match the Default
+        final Collection<Principal> mapped = function.apply(CollectionSupport.listOf("pwd"));
+        assert mapped!= null;
+        assertEquals(mapped.size(), 1);
+        assertTrue(mapped.contains(new AuthenticationMethodPrincipal
+                        ("default")));
+       
+    }
+    
+    @Test
+    public void testSingleMappingSuccess_DefaultIgnored() {
+        
+        
+        final Map<String,Collection<Principal>> mappings = new HashMap<>();
+        mappings.put(
+                ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction.DEFAULT, 
+                List.of(new AuthenticationMethodPrincipal
+                        ("default")));
+        mappings.put(
+                "pwd", 
+                List.of(new AuthenticationMethodPrincipal
+                        ("urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"))); 
+        function = new ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction(mappings);;
+        
+        // Has specific match, Default is ignored.
+        final Collection<Principal> mapped = function.apply(CollectionSupport.listOf("pwd"));
+        assert mapped!= null;
+        assertEquals(mapped.size(), 1);
+        assertTrue(mapped.contains(new AuthenticationMethodPrincipal
+                        ("urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport")));
+       
+    }
+    
+    @Test
     public void testSingleMappingSuccess_EmptyInput() {
         
         // OTP should not be in the result

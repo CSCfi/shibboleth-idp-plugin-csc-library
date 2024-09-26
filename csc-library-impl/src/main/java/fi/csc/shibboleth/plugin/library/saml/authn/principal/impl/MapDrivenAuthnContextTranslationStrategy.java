@@ -38,7 +38,7 @@ public class MapDrivenAuthnContextTranslationStrategy implements Function<AuthnC
     @Nonnull private final Logger log = LoggerFactory.getLogger(MapDrivenAuthnContextTranslationStrategy.class);
     
     /** Key for response mapping to be used for unmapped ACRs. */
-    @Nonnull public final static String DEFAULT = "csclib.UpstreamACR.Default";
+    @Nonnull public final static AuthnContextClassRefPrincipal DEFAULT = new AuthnContextClassRefPrincipal("csclib.UpstreamACR.Default");
     
     /** Mappings to transform proxied Principals. */
     @Nonnull private Map<Principal,Collection<Principal>> principalMappings;

@@ -30,4 +30,8 @@
     <bean id="csclib.OIDC.UpstreamClientCredentialsLookupStrategy"
           class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.JSONPropertyClientCredentialsLookupFunction" />
 
+    <bean id="csclib.SAML.MapDrivenAuthnContextTranslationStrategy"
+          class="net.shibboleth.idp.saml.authn.principal.impl.MapDrivenAuthnContextTranslationStrategy"
+          p:mappings="#{getObject('shibboleth.PrincipalProxyResponseMappings')}" />
+
 </beans>

@@ -19,14 +19,11 @@ import java.util.function.Function;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
 
-import net.shibboleth.idp.authn.context.AuthenticationContext;
 import net.shibboleth.oidc.security.credential.ClientSecretCredential;
 import net.shibboleth.oidc.security.credential.DefaultClientSecretCredential;
 import net.shibboleth.profile.context.RelyingPartyContext;
-import net.shibboleth.shared.logic.Constraint;
 import net.shibboleth.shared.primitive.LoggerFactory;
 
-import org.opensaml.messaging.context.navigate.ChildContextLookup;
 import org.opensaml.profile.context.ProfileRequestContext;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,6 +42,15 @@ public class JSONPropertyClientCredentialsLookupFunction
     /** Map of client credentials per upstream OP. */
     @Value("#{%{csclib.oidc.upstream.clientCredentials:null}}")
     private Map<String, String> clientCredentials;
+
+    /**
+     * Set map of client credentials per upstream OP.
+     * 
+     * @param credentials Map of client credentials per upstream OP
+     */
+    public void setClientCredentials(Map<String, String> credentials) {
+        clientCredentials = credentials;
+    }
 
     @Override
     public ClientSecretCredential apply(@Nonnull ProfileRequestContext prc) {

@@ -45,6 +45,15 @@ public class JSONPropertyClientIdLookupFunction implements Function<ProfileReque
     @Value("#{%{csclib.oidc.upstream.clientIds:null}}")
     private Map<String, String> clientIds;
 
+    /**
+     * Set map of client ids per upstream OP.
+     * 
+     * @param ids Map of client ids per upstream OP
+     */
+    public void setClientIds(@Nullable Map<String, String> ids) {
+        clientIds = ids;
+    }
+
     @Override
     @Nullable
     public String apply(@Nonnull ProfileRequestContext prc) {

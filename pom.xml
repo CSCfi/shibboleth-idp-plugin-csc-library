@@ -57,6 +57,12 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
+        <groupId>${idp.groupId}</groupId>
+        <artifactId>idp-saml-api</artifactId>
+        <version>${idp.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
         <groupId>net.shibboleth.oidc</groupId>
         <artifactId>oidc-common-crypto-api</artifactId>
         <version>3.0.0</version>
@@ -84,12 +90,6 @@
       <dependency>
         <groupId>${idp.groupId}</groupId>
         <artifactId>idp-testing</artifactId>
-        <version>${idp.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>${idp.groupId}</groupId>
-        <artifactId>idp-saml-api</artifactId>
         <version>${idp.version}</version>
         <scope>test</scope>
       </dependency>

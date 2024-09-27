@@ -1,7 +1,5 @@
 # Shibboleth Idp Plugin CSC Library
 
-
-
 ## Intro
 
 Bean library for CSC IdPs.
@@ -11,12 +9,15 @@ Bean library for CSC IdPs.
 ### csclib.OIDC.AuthenticationContextClassReferenceTranslationStrategyLookupStrategy
 
 Has enhancements to shibboleth projects standard OIDC response translation strategy. You may have default translations and translate nonexistent ACR responses.  
+
 Activation of functionality in relying party:  
 
-`<bean parent="OIDC.SSO" p:clientIdLookupStrategy-ref="csclib.OIDC.UpstreamClientIdLookupStrategy"..`. 
+```
+<bean parent="OIDC.SSO" p:clientIdLookupStrategy-ref="csclib.OIDC.UpstreamClientIdLookupStrategy"... 
+```
 
 New translations key `csclib.UpstreamACR.Default` is applied to upstream ACRs that do not have translation key.   
-`
+```
     <util:map id="shibboleth.oidc.PrincipalProxyResponseMappings">. 
         <entry key="csclib.UpstreamACR.Default">. 
             <list>. 
@@ -27,10 +28,10 @@ New translations key `csclib.UpstreamACR.Default` is applied to upstream ACRs th
               </list>. 
             </entry>. 
     </util:map>. 
-`. 
-Empty translation key `""` is applied to when upstream does not include ACR claim in Id Token.  
+``` 
 
-`
+Empty translation key `""` is applied to when upstream does not include ACR claim in Id Token.  
+```
     <util:map id="shibboleth.oidc.PrincipalProxyResponseMappings">. 
         <entry key="">. 
             <list>. 
@@ -41,19 +42,22 @@ Empty translation key `""` is applied to when upstream does not include ACR clai
               </list>. 
             </entry>. 
     </util:map>. 
-`
+```
 ### csclib.OIDC.UpstreamClientIdLookupStrategy
 
 Bean that resolves OIDC RP client id per upstream issuer from property `csclib.oidc.upstream.clientIds`.
 
-
 Activation of functionality in relying party:
 
-`<bean parent="OIDC.SSO" p:clientIdLookupStrategy-ref="csclib.OIDC.UpstreamClientIdLookupStrategy"..`
+```
+<bean parent="OIDC.SSO" p:clientIdLookupStrategy-ref="csclib.OIDC.UpstreamClientIdLookupStrategy"..
+```
 
 Property value example:
 
-`csclib.oidc.upstream.clientIds = {"default": "default_clientId", "https://upstreamOP1.com", "upstreamOP1_clientId", "https://upstreamOP2.com", "upstreamOP2_clientId"}`
+```
+csclib.oidc.upstream.clientIds = {"default": "default_clientId", "https://upstreamOP1.com", "upstreamOP1_clientId", "https://upstreamOP2.com", "upstreamOP2_clientId"}
+```
 
 ### csclib.OIDC.UpstreamClientCredentialsLookupStrategy
 
@@ -62,12 +66,15 @@ Bean that resolves OIDC RP client secret per upstream issuer from property `cscl
 
 Activation of functionality in relying party:
 
-`<bean parent="OIDC.SSO" p:clientCredentialLookupStrategy-ref="csclib.OIDC.UpstreamClientCredentialsLookupStrategy"..`
-
+```
+<bean parent="OIDC.SSO" p:clientCredentialLookupStrategy-ref="csclib.OIDC.UpstreamClientCredentialsLookupStrategy"..
+```
 
 Property value example:
 
-`csclib.oidc.upstream.clientCredentials = {"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}`
+```
+csclib.oidc.upstream.clientCredentials = {"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}
+```
 
 ### csclib.SAML.MapDrivenAuthnContextTranslationStrategy
 
@@ -75,11 +82,13 @@ Has enhancement to shibboleth projects standard SAML2 translation strategy. You 
 
 Activation of functionality in relying party:
 
-`<bean parent="SAML2.SSO" p:authnContextTranslationStrategy-ref="csclib.SAML.MapDrivenAuthnContextTranslationStrategy"..`
+```
+<bean parent="SAML2.SSO" p:authnContextTranslationStrategy-ref="csclib.SAML.MapDrivenAuthnContextTranslationStrategy"..
+```
 
 New translations key `<bean parent="shibboleth.SAML2AuthnContextClassRef" c:classRef="csclib.UpstreamACR.Default" />` is applied to upstream ACRs that do not have translation key. 
 
-`
+```
     <util:map id="shibboleth.PrincipalProxyResponseMappings">. 
         <entry>. 
             <key>. 
@@ -94,4 +103,4 @@ New translations key `<bean parent="shibboleth.SAML2AuthnContextClassRef" c:clas
               </list>. 
             </entry>. 
     </util:map>. 
-`
+```

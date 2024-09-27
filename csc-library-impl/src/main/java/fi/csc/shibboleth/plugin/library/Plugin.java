@@ -9,7 +9,7 @@ import net.shibboleth.profile.module.ModuleException;
 import net.shibboleth.profile.plugin.PluginException;
 
 /**
- * Details about the user profile plugin.
+ * Details about the csc library plugin.
  */
 public class Plugin extends PropertyDrivenIdPPlugin {
 

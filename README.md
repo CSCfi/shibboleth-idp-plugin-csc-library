@@ -18,30 +18,30 @@ Activation of functionality in relying party:
 
 New translations key `csclib.UpstreamACR.Default` is applied to upstream ACRs that do not have translation key.   
 ```
-    <util:map id="shibboleth.oidc.PrincipalProxyResponseMappings">. 
-        <entry key="csclib.UpstreamACR.Default">. 
-            <list>. 
-                <bean parent="shibboleth.OIDCAuthnContextClassReference". 
-                   c:classRef="https://downstream.com/FederationX" />. 
-                <bean parent="shibboleth.SAML2AuthnContextClassRef". 
-                   c:classRef="https://downstream.com/FederationX" />. 
-              </list>. 
-            </entry>. 
-    </util:map>. 
+    <util:map id="shibboleth.oidc.PrincipalProxyResponseMappings"> 
+        <entry key="csclib.UpstreamACR.Default"> 
+            <list> 
+                <bean parent="shibboleth.OIDCAuthnContextClassReference" 
+                   c:classRef="https://downstream.com/FederationX" /> 
+                <bean parent="shibboleth.SAML2AuthnContextClassRef" 
+                   c:classRef="https://downstream.com/FederationX" /> 
+              </list> 
+            </entry> 
+    </util:map> 
 ``` 
 
 Empty translation key `""` is applied to when upstream does not include ACR claim in Id Token.  
 ```
-    <util:map id="shibboleth.oidc.PrincipalProxyResponseMappings">. 
-        <entry key="">. 
-            <list>. 
-                <bean parent="shibboleth.OIDCAuthnContextClassReference". 
-                   c:classRef="https://downstream.com/FederationX" />. 
-                <bean parent="shibboleth.SAML2AuthnContextClassRef". 
-                   c:classRef="https://downstream.com/FederationX" />. 
-              </list>. 
-            </entry>. 
-    </util:map>. 
+    <util:map id="shibboleth.oidc.PrincipalProxyResponseMappings"> 
+        <entry key=""> 
+            <list> 
+                <bean parent="shibboleth.OIDCAuthnContextClassReference" 
+                   c:classRef="https://downstream.com/FederationX" /> 
+                <bean parent="shibboleth.SAML2AuthnContextClassRef" 
+                   c:classRef="https://downstream.com/FederationX" /> 
+              </list> 
+            </entry> 
+    </util:map> 
 ```
 ### csclib.OIDC.UpstreamClientIdLookupStrategy
 
@@ -89,18 +89,18 @@ Activation of functionality in relying party:
 New translations key `<bean parent="shibboleth.SAML2AuthnContextClassRef" c:classRef="csclib.UpstreamACR.Default" />` is applied to upstream ACRs that do not have translation key. 
 
 ```
-    <util:map id="shibboleth.PrincipalProxyResponseMappings">. 
-        <entry>. 
-            <key>. 
-                <bean parent="shibboleth.SAML2AuthnContextClassRef". 
-                   c:classRef="csclib.UpstreamACR.Default" />. 
-            </key>. 
-            <list>. 
-                <bean parent="shibboleth.OIDCAuthnContextClassReference". 
-                   c:classRef="https://downstream.com/FederationX" />. 
-                <bean parent="shibboleth.SAML2AuthnContextClassRef". 
-                   c:classRef="https://downstream.com/FederationX" />. 
-              </list>. 
-            </entry>. 
-    </util:map>. 
+    <util:map id="shibboleth.PrincipalProxyResponseMappings"> 
+        <entry> 
+            <key> 
+                <bean parent="shibboleth.SAML2AuthnContextClassRef" 
+                   c:classRef="csclib.UpstreamACR.Default" /> 
+            </key> 
+            <list> 
+                <bean parent="shibboleth.OIDCAuthnContextClassReference" 
+                   c:classRef="https://downstream.com/FederationX" /> 
+                <bean parent="shibboleth.SAML2AuthnContextClassRef" 
+                   c:classRef="https://downstream.com/FederationX" /> 
+              </list> 
+            </entry> 
+    </util:map> 
 ```

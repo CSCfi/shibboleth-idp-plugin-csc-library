@@ -92,7 +92,7 @@ public class MapDrivenAuthnContextTranslationStrategy implements Function<AuthnC
                 }
                 return mapped;
             } else if (principalMappings.containsKey(DEFAULT)) {
-                final Collection<Principal> mapped = principalMappings.get(principal);
+                final Collection<Principal> mapped = principalMappings.get(DEFAULT);
                 if (log.isTraceEnabled()) {
                     log.trace("Mapped '{}' to ", principal.getName(),
                             mapped.stream().map(Principal::getName).collect(Collectors.toUnmodifiableList()));

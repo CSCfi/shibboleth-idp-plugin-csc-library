@@ -13,7 +13,7 @@ Has enhancements to shibboleth projects standard OIDC response translation strat
 Activation of functionality in relying party:  
 
 ```
-<bean parent="OIDC.SSO" p:clientIdLookupStrategy-ref="csclib.OIDC.UpstreamClientIdLookupStrategy"... 
+<bean parent="OIDC.SSO" p:authenticationContextClassReferenceTranslationStrategyLookupStrategy-ref="csclib.OIDC.AuthenticationContextClassReferenceTranslationStrategyLookupStrategy"...
 ```
 
 New translations key `csclib.UpstreamACR.Default` is applied to upstream ACRs that do not have translation key.   

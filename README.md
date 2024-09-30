@@ -30,7 +30,7 @@ New translations key `csclib.UpstreamACR.Default` is applied to upstream ACRs th
     </util:map> 
 ``` 
 
-Empty translation key `""` is applied to when upstream does not include ACR claim in Id Token.  
+Empty translation key `""` is applied when upstream does not include ACR claim in Id Token.  
 ```
     <util:map id="shibboleth.oidc.PrincipalProxyResponseMappings"> 
         <entry key=""> 

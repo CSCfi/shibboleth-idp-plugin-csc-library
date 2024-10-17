@@ -56,7 +56,7 @@ Activation of functionality in relying party:
 Property value example:
 
 ```
-csclib.oidc.upstream.clientIds = {"default": "default_clientId", "https://upstreamOP1.com", "upstreamOP1_clientId", "https://upstreamOP2.com", "upstreamOP2_clientId"}
+csclib.oidc.upstream.clientIds = {"default": "default_clientId", "https://upstreamOP1.com": "upstreamOP1_clientId", "https://upstreamOP2.com": "upstreamOP2_clientId"}
 ```
 
 ### csclib.OIDC.UpstreamClientCredentialsLookupStrategy
@@ -73,7 +73,7 @@ Activation of functionality in relying party:
 Property value example:
 
 ```
-csclib.oidc.upstream.clientCredentials = {"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}
+csclib.oidc.upstream.clientCredentials = {"default": "default_clientSecret", "https://upstreamOP1.com": "upstreamOP1_Secret", "https://upstreamOP2.com": "upstreamOP2_Secret"}
 ```
 
 ### csclib.SAML.MapDrivenAuthnContextTranslationStrategy

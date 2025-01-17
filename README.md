@@ -104,3 +104,20 @@ New translations key `<bean parent="shibboleth.SAML2AuthnContextClassRef" c:clas
             </entry>. 
     </util:map>. 
 ```
+
+## Filters
+
+### SLF4JMDCTraceParentServletFilter
+
+Filter that populates MDC keys csclib.traceparent_traceid, csclib.traceparent_parentid and csclib.traceparent_traceflags per traceparent header or request parameter. Filter can be disabled in  csc-library.properties.
+```
+csclib.logging.MDC.enabled = true
+```
+
+## 3rd party libraries
+
+### logstash-logback-encoder version 8.0
+
+We provide the library via this plugin until we run into too much inconvenience.
+
+  

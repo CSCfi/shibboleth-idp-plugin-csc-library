@@ -34,4 +34,7 @@
           class="fi.csc.shibboleth.plugin.library.saml.authn.principal.impl.MapDrivenAuthnContextTranslationStrategy"
           p:mappings="#{getObject('shibboleth.PrincipalProxyResponseMappings')}" />
 
+    <bean class="fi.csc.shibboleth.plugin.library.filter.SLF4JMDCTraceParentServletFilter"
+          p:activationCondition="%{csclib.logging.MDC.enabled:true}" />
+
 </beans>

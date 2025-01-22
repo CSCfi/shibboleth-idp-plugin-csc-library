@@ -167,7 +167,7 @@ public class TraceparentHeader {
     @Nonnull
     public static TraceparentHeader spanTraceheader() {
         return new TraceparentHeader(MDC.get(SLF4JMDCTraceParentServletFilter.TRACEPARENT_TRACEID_MDC_ATTRIBUTE),
-                generateParentId(), SLF4JMDCTraceParentServletFilter.TRACEPARENT_TRACEFLAGS_MDC_ATTRIBUTE);
+                generateParentId(), MDC.get(SLF4JMDCTraceParentServletFilter.TRACEPARENT_TRACEFLAGS_MDC_ATTRIBUTE));
     }
 
     /**

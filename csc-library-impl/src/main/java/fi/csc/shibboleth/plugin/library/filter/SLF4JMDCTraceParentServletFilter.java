@@ -19,12 +19,10 @@ import net.shibboleth.shared.servlet.AbstractConditionalFilter;
 import net.shibboleth.shared.spring.servlet.ChainableFilter;
 
 /**
- * Servlet filter that sets traceparent MDC attributes as the request comes in
- * and clears the MDC as the response is returned. Values are parsed either from
- * request parameter or header in the case execution is not inside webflow yet.
- * If we are inside webflow value is read from session. If no value can be found
- * traceparent information is generatd. Supports only traceparent version "00".
- * 
+ * Servlet filter that sets traceparent header MDC attributes as the request
+ * comes in and clears the MDC as the response is returned. Value is parsed
+ * either from (in order) header, request parameter or session. If there is
+ * none, new traceparent header is created.
  */
 
 public class SLF4JMDCTraceParentServletFilter extends AbstractConditionalFilter implements ChainableFilter {
@@ -68,15 +66,10 @@ public class SLF4JMDCTraceParentServletFilter extends AbstractConditionalFilter 
         assert chain != null;
         try {
             if (request instanceof HttpServletRequest httpRequest) {
-                HttpSession session = ((HttpServletRequest) request).getSession();
-                String value = null;
-                if (httpRequest.getParameter("execution") == null) {
-                    session.removeAttribute(TRACEPARENT_ATTRIBUTE);
-                } else {
-                    value = (String) session.getAttribute(TRACEPARENT_ATTRIBUTE);
-                }
-                value = value == null ? httpRequest.getHeader(TRACEPARENT_FIELDNAME) : value;
+                String value = httpRequest.getHeader(TRACEPARENT_FIELDNAME);
                 value = value == null ? httpRequest.getParameter(TRACEPARENT_FIELDNAME) : value;
+                HttpSession session = ((HttpServletRequest) request).getSession();
+                value = value == null ? (String) session.getAttribute(TRACEPARENT_ATTRIBUTE) : value;
                 TraceparentHeader header = TraceparentHeader.parse(value);
                 header = header == null ? TraceparentHeader.generateTraceheader() : header;
                 session.setAttribute(TRACEPARENT_ATTRIBUTE, header.getValue());

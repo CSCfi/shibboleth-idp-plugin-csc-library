@@ -75,6 +75,22 @@ Property value example:
 ```
 csclib.oidc.upstream.clientCredentials = {"default": "default_clientSecret", "https://upstreamOP1.com", "upstreamOP1_Secret", "https://upstreamOP2.com", "upstreamOP2_Secret"}
 ```
+### csclib.OIDC.UpstreamScopesLookupStrategy
+
+Bean that resolves scope value per upstream issuer from property `csclib.oidc.upstream.scopes`.
+
+
+Activation of functionality in relying party:
+
+```
+<bean parent="OIDC.SSO" p:scopesLookupStrategy-ref="csclib.OIDC.UpstreamScopesLookupStrategy"..
+```
+
+Property value example:
+
+```
+csclib.oidc.upstream.scopes = {"default": "openid", "https://upstreamOP1.com", "openid mail", "https://upstreamOP2.com", "openid mail profile"}
+```
 
 ### csclib.SAML.MapDrivenAuthnContextTranslationStrategy
 

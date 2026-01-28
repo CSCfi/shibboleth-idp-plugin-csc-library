@@ -15,15 +15,7 @@
     <bean id="shibboleth.PropertySourcesPlaceholderConfigurer"
         class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer"
         p:placeholderPrefix="%{" p:placeholderSuffix="}" />
-
-    <bean id="csclib.OIDC.AuthenticationContextClassReferenceTranslationStrategyLookupStrategy"
-          class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction$LookupFunctionWrapper">
-      <constructor-arg>
-        <bean class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.ProxyAwareDefaultOIDCAuthenticationContextClassResponseLookupFunction"
-              c:mappings="#{getObject('shibboleth.oidc.PrincipalProxyResponseMappings')}"/>
-      </constructor-arg>
-    </bean>
-
+ 
     <bean id="csclib.OIDC.UpstreamClientIdLookupStrategy"
           class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.PropertyClientIdLookupFunction" />
 
@@ -32,12 +24,5 @@
           
     <bean id="csclib.OIDC.UpstreamScopesLookupStrategy"
           class="fi.csc.shibboleth.plugin.library.oidc.profile.config.navigate.PropertyScopesLookupFunction" />
-
-    <bean id="csclib.SAML.MapDrivenAuthnContextTranslationStrategy"
-          class="fi.csc.shibboleth.plugin.library.saml.authn.principal.impl.MapDrivenAuthnContextTranslationStrategy"
-          p:mappings="#{getObject('shibboleth.PrincipalProxyResponseMappings')}" />
-
-    <bean class="fi.csc.shibboleth.plugin.library.filter.SLF4JMDCTraceParentServletFilter"
-          p:activationCondition="%{csclib.logging.MDC.enabled:true}" />
 
 </beans>

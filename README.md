@@ -89,7 +89,7 @@ Activation of functionality in relying party:
 Property value example:
 
 ```
-csclib.oidc.upstream.scopes = {"default": "openid", "https://upstreamOP1.com", "openid mail", "https://upstreamOP2.com", "openid mail profile"}
+csclib.oidc.upstream.scopes = {"default": "openid", "https://upstreamOP1.com": "openid mail", "https://upstreamOP2.com": "openid mail profile"}
 ```
 
 ### csclib.SAML.MapDrivenAuthnContextTranslationStrategy

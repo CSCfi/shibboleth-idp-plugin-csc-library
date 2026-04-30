@@ -20,7 +20,6 @@
     <dependency>
       <groupId>fi.csc.shibboleth.plugin.library</groupId>
       <artifactId>csc-library-api</artifactId>
-      <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>      
     <!-- provided dependencies -->
@@ -32,6 +31,21 @@
     <dependency>
       <groupId>${idp.groupId}</groupId>
       <artifactId>idp-saml-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>${idp.groupId}</groupId>
+      <artifactId>idp-ui</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>${idp.groupId}</groupId>
+      <artifactId>idp-authn-impl</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.shibboleth.idp.plugin.oidc</groupId>
+      <artifactId>idp-plugin-oidc-op-api</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>

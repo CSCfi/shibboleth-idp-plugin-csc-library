@@ -39,5 +39,20 @@
 
     <bean class="fi.csc.shibboleth.plugin.library.filter.SLF4JMDCTraceParentServletFilter"
           p:activationCondition="%{csclib.logging.MDC.enabled:true}" />
+          
+    <bean id="csclib.EventStore"
+          class="fi.csc.shibboleth.plugin.library.inform.impl.EventStore" />
+          
+    <bean id="csclib.DefaultEventContentLookupStrategy"
+          class="fi.csc.shibboleth.plugin.library.inform.impl.DefaultCSCIdMEventContentLookupStrategy" />
+          
+    <bean id="csclib.EventInformer"
+          class="fi.csc.shibboleth.plugin.library.inform.impl.HttpInformer"
+          p:eventStore-ref="csclib.EventStore"
+          p:httpClient="#{getObject('csclib.HttpClient') ?: getObject('shibboleth.InternalHttpClient')}"
+          p:httpClientSecurityParameters="#{getObject('csclib.HttpClientSecurityParameters')}" />
+          
+    <!-- Interceptor bean definition. -->
+    <bean id="intercept/http-inform" parent="shibboleth.InterceptFlow" />
 
 </beans>

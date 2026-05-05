@@ -195,7 +195,6 @@ public class AddEvent extends AbstractProfileAction {
     public void setAddressLookupStrategy(@Nonnull final Function<ProfileRequestContext, String> strategy) {
         checkSetterPreconditions();
         addressLookupStrategy = Constraint.isNotNull(strategy, "Strategy cannot be null");
-        ;
     }
 
     /**

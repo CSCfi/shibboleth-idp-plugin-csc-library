@@ -112,39 +112,46 @@ public class DefaultCSCIdMEventContentLookupStrategy
         }
 
         Map<String, IdPAttribute> attributes = attributeContext.getUnfilteredIdPAttributes();
-        IdPAttribute attribute = attributes.get(attributeNames.get("cscUserName"));
+        String name = attributeNames.get("cscUserName");
+        IdPAttribute attribute = name != null ? attributes.get(name) : null;
         if (attribute != null) {
             cscIdmEvent.put("cscUserName", attribute.getValues().get(0).getDisplayValue());
         }
 
-        attribute = attributes.get(attributeNames.get("remoteUserIdentifier"));
+        name = attributeNames.get("remoteUserIdentifier");
+        attribute = name != null ? attributes.get(name) : null;
         if (attribute != null) {
             cscIdmEvent.put("remoteUserIdentifier", attribute.getValues().get(0).getDisplayValue());
         }
 
-        attribute = attributes.get(attributeNames.get("eduPersonScopedAffiliation"));
+        name = attributeNames.get("eduPersonScopedAffiliation");
+        attribute = name != null ? attributes.get(name) : null;
         if (attribute != null) {
             List<String> values = new ArrayList<>();
             attribute.getValues().forEach(value -> values.add(value.getDisplayValue()));
             cscIdmEvent.put("eduPersonScopedAffiliation", values);
         }
 
-        attribute = attributes.get(attributeNames.get("schacCountryOfCitizenship"));
+        name = attributeNames.get("schacCountryOfCitizenship");
+        attribute = name != null ? attributes.get(name) : null;
         if (attribute != null) {
             cscIdmEvent.put("schacCountryOfCitizenship", attribute.getValues().get(0).getDisplayValue());
         }
 
-        attribute = attributes.get(attributeNames.get("givenName"));
+        name = attributeNames.get("givenName");
+        attribute = name != null ? attributes.get(name) : null;
         if (attribute != null) {
             cscIdmEvent.put("givenName", attribute.getValues().get(0).getDisplayValue());
         }
 
-        attribute = attributes.get(attributeNames.get("surname"));
+        name = attributeNames.get("surname");
+        attribute = name != null ? attributes.get(name) : null;
         if (attribute != null) {
             cscIdmEvent.put("surname", attribute.getValues().get(0).getDisplayValue());
         }
 
-        attribute = attributes.get(attributeNames.get("mail"));
+        name = attributeNames.get("mail");
+        attribute = name != null ? attributes.get(name) : null;
         if (attribute != null) {
             cscIdmEvent.put("mail", attribute.getValues().get(0).getDisplayValue());
         }
